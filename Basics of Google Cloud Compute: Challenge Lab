@@ -1,0 +1,35 @@
+# Set the region and zone
+
+gcloud config set compute/zone us-east4-a
+gcloud config set compute/region us-east4 
+
+#create variable for region and zone:
+export REGION=us-east4 
+export ZONE= us-east4-a
+
+
+#Task 2. Create and attach a persistent disk to a Compute Engine instance
+
+#2. Create a new persistent disk named mydisk with a size of 200GB.
+
+gcloud compute disks create mydisk --size=200GB \--zone us-east4-a
+
+#3 Attach the persistent disk to the instance.
+
+gcloud compute instance attach-disk my-instance --disk mydisk --zone  us-east4-a
+
+
+
+#Task 3. Install a NGINX web server
+
+#1. Update the OS.
+
+sudo apt-get update
+
+#2. Install NGINX.
+
+sudo apt-get install -y nginx
+
+#Confirm that NGINX is running.
+
+ps auwx | grep nginx
